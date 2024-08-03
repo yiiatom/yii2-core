@@ -14,7 +14,7 @@ class BackendController extends \yii\web\Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['Admin'],
                     ],
                 ],
             ],
