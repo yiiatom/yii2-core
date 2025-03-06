@@ -1,10 +1,10 @@
 <?php
 
-namespace atom\cms\core;
+namespace atom;
 
-class BackendModule extends \yii\base\Module
+use yii\base\Module;
+
+abstract class BackendModule extends Module
 {
-    public function menu(&$items, $baseRoute)
-    {
-    }
+    abstract public function menu(array &$items, string $baseRoute): void;
 }
