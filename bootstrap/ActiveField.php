@@ -2,6 +2,7 @@
 
 namespace atom\bootstrap;
 
+use atom\widgets\ArrayInput;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -13,6 +14,7 @@ class ActiveField extends \yii\widgets\ActiveField
     public $errorOptions = ['class' => 'invalid-feedback'];
     public $labelOptions = ['class' => 'form-label'];
     public $hintOptions = ['class' => 'form-text'];
+    public $tableOptions = ['class' => 'table'];
 
     public $checkboxTemplate = "{input}\n{label}\n{hint}\n{error}";
     public $checkboxContainerClass = 'form-check';
@@ -74,5 +76,19 @@ class ActiveField extends \yii\widgets\ActiveField
     {
         $this->inputOptions = $this->selectOptions;
         return parent::dropDownList($items, $options);
+    }
+
+    public function array(array $columns = [], array $options = [])
+    {
+        $options = array_merge($this->tableOptions, $options);
+
+        $this->parts['{input}'] = ArrayInput::widget([
+            'model' => $this->model,
+            'attribute' => $this->attribute,
+            'columns' => $columns,
+            'options' => $options,
+        ]);
+
+        return $this;
     }
 }
