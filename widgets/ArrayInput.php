@@ -77,7 +77,8 @@ class ArrayInput extends InputWidget
 
 
         $items['-'] = [];
-        // var_dump($items); die();
+
+        echo Html::hiddenInput($this->name);
 
         echo GridView::widget([
             'dataProvider' => new ArrayDataProvider([
@@ -90,36 +91,6 @@ class ArrayInput extends InputWidget
             'columns' => $columns,
             'options' => ['class' => 'array-input-container'],
         ]);
-
-
-
-        // $options = $this->options;
-        // Html::addCssClass($options, 'array-table-input');
-
-        // $showHeading = false;
-        // $columns = $this->columns ?: [['name' => 'test']];
-        // // $columns = $this->columns ?: [['heading' => false]];
-        // foreach ($columns as &$column) {
-        //     if (!isset($column['heading'])) {
-        //         $name = $column['name'] ?? null;
-        //         $column['heading'] = $name ? Inflector::camel2words($name, true) : false;
-        //     }
-        //     if ($column['heading']) {
-        //         $showHeading = true;
-        //     }
-        // }
-
-        // echo Html::beginTag('table', $options);
-
-        // if ($showHeading) {
-        //     echo Html::beginTag('thead');
-        //     foreach ($columns as $column) {
-        //         echo Html::
-        //     }
-        //     echo Html::endTag('thead');
-        // }
-
-        // echo Html::endTag('table');
     }
 
     public function cellTextInput($model, $key, $index, $column)
